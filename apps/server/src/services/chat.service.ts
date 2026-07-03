@@ -1,13 +1,19 @@
-import { delay } from "../utils/delay.js";
+import { AIManager } from "../providers/ai/AIManager.js";
+import type {
+  ChatMessage,
+  StreamOptions,
+} from "../providers/ai/AIProvider.js";
 
-export async function* generateReplyStream(message: string) {
-  const reply = `You said: ${message}`;
+class ChatService {
+  streamReply(messages: ChatMessage[]) {
+    const provider = AIManager.getProvider();
 
-  const words = reply.split(" ");
+    const options: StreamOptions = {
+      messages,
+    };
 
-  for (const word of words) {
-    await delay(300);
-
-    yield word + " ";
+    return provider.streamReply(options);
   }
 }
+
+export const chatService = new ChatService();

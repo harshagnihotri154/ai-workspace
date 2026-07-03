@@ -1,7 +1,8 @@
-import { Router } from "express";
 import { chatController } from "../controllers/chat.controller.js";
 
-const router = Router();
+import { Router, type Router as ExpressRouter } from "express";
+
+const router: ExpressRouter = Router();
 
 router.post("/", chatController);
 
