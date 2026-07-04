@@ -1,7 +1,7 @@
 import { Bot, User } from "lucide-react";
 import ThinkingIndicator from "./ThinkingIndicator";
 import type { Message } from "../types/chat";
-
+import MarkdownRenderer from "./markdown/MarkdownRenderer";
 type Props = {
   message: Message;
 };
@@ -24,11 +24,10 @@ export default function MessageBubble({ message }: Props) {
         {/* Avatar */}
 
         <div
-          className={`mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl ${
-            isUser
+          className={`mt-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl ${isUser
               ? "bg-zinc-800"
               : "bg-gradient-to-br from-violet-600 to-indigo-500"
-          }`}
+            }`}
         >
           {isUser ? (
             <User size={18} className="text-white" />
@@ -45,9 +44,26 @@ export default function MessageBubble({ message }: Props) {
             {isUser ? "You" : "AI Workspace"}
           </h3>
 
-          <div className="text-[16px] leading-8 text-zinc-300 whitespace-pre-wrap break-words">
-            {message.content}
-          </div>
+        <div
+  className="
+    prose
+    prose-invert
+    max-w-none
+
+    prose-headings:text-white
+    prose-p:text-zinc-300
+    prose-strong:text-white
+    prose-em:text-zinc-300
+    prose-code:text-violet-300
+    prose-li:text-zinc-300
+    prose-a:text-violet-400
+
+    prose-pre:bg-transparent
+    prose-pre:p-0
+  "
+>
+  <MarkdownRenderer content={message.content} />
+</div>
 
         </div>
 
