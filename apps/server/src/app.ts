@@ -1,24 +1,29 @@
+import express, { type Express } from "express";
 import cors from "cors";
+
 import chatRoutes from "./routes/chat.routes.js";
 
-import express, { type Express } from "express";
-
 const app: Express = express();
+
+// Middlewares
 app.use(
   cors({
     origin: "http://localhost:5173",
+    credentials: true,
   })
 );
 
-// app.use(cors());
 app.use(express.json());
 
-app.use("/api/chat", chatRoutes);
-
+// Health Check
 app.get("/", (_req, res) => {
   res.json({
-    message: "AI Workspace API",
+    success: true,
+    message: "AI Workspace API is running 🚀",
   });
 });
+
+// Routes
+app.use("/api/chat", chatRoutes);
 
 export default app;
