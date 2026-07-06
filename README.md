@@ -1,159 +1,286 @@
-# Turborepo starter
+# 🚀 AI Workspace
 
-This Turborepo starter is maintained by the Turborepo core team.
+> A production-ready AI Workspace built with TypeScript, React, Node.js, MongoDB, and Google Gemini.
 
-## Using this example
+AI Workspace is a full-stack AI platform designed with scalable software architecture in mind. It provides real-time AI conversations, persistent chat history, multiple AI provider support, and is being built to support Retrieval-Augmented Generation (RAG), tool calling, memory, authentication, and much more.
 
-Run the following command:
+---
 
-```sh
-npx create-turbo@latest
+## ✨ Features
+
+### ✅ Current
+
+- ⚡ Real-time AI response streaming
+- 🤖 Google Gemini integration
+- 🧩 AI Provider Pattern
+- 📦 Repository Pattern
+- 🏗 Clean Architecture
+- 💬 Persistent chat storage
+- 📝 Markdown rendering
+- 🎨 Modern React UI
+- 📂 MongoDB integration
+- 📜 Conversation history
+- ⚙️ TypeScript throughout the project
+
+---
+
+## 🚧 Coming Soon
+
+- 🔐 Authentication (JWT)
+- 📂 Chat Sidebar
+- 🗂 Multiple Conversations
+- 📄 Document Upload
+- 🧠 RAG (Retrieval Augmented Generation)
+- 🧰 Tool Calling
+- 🖼 Image Generation
+- 🎙 Voice Conversations
+- 🤖 Multi-Model Support (Gemini, OpenAI, Claude)
+- 🧠 Long-Term Memory
+- 📊 Usage Analytics
+- 🌙 Themes & Customization
+
+---
+
+# 🏛 Architecture
+
+```
+Frontend (React)
+
+        │
+
+        ▼
+
+Controllers
+
+        │
+
+        ▼
+
+Services
+
+   ┌───────────────┐
+   ▼               ▼
+
+Repositories     AI Providers
+
+   ▼               ▼
+
+MongoDB        Gemini / OpenAI
+
 ```
 
-## What's inside?
+The project follows a layered architecture to keep business logic independent from databases and AI providers.
 
-This Turborepo includes the following packages/apps:
+---
 
-### Apps and Packages
+# 🛠 Tech Stack
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+## Frontend
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Markdown
+- Remark GFM
 
-### Utilities
+## Backend
 
-This Turborepo has some additional tools already setup for you:
+- Node.js
+- Express
+- TypeScript
+- Google Gemini API
+- MongoDB
+- Mongoose
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+## Architecture
 
-### Build
+- Repository Pattern
+- Provider Pattern
+- Layered Architecture
+- Streaming Responses
 
-To build all apps and packages, run the following command:
+---
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
+# 📁 Project Structure
 
-```sh
-cd my-turborepo
-turbo build
+```
+apps
+├── web
+└── server
+
+server
+├── config
+├── controllers
+├── database
+├── middleware
+├── models
+├── providers
+├── repositories
+├── routes
+├── services
+├── utils
+
+web
+├── components
+├── pages
+├── services
+├── types
+└── layouts
 ```
 
-Without global `turbo`, use your package manager:
+---
 
-```sh
-cd my-turborepo
-npx turbo build
-pnpm dlx turbo build
-pnpm exec turbo build
+# 🚀 Getting Started
+
+## Clone the Repository
+
+```bash
+git clone https://github.com/your-username/ai-workspace.git
+
+cd ai-workspace
 ```
 
-You can build a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+---
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
+## Install Dependencies
 
-```sh
-turbo build --filter=docs
+```bash
+npm install
 ```
 
-Without global `turbo`:
+---
 
-```sh
-npx turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
+## Environment Variables
+
+Create a `.env` file inside `apps/server`.
+
+```env
+PORT=4000
+
+GEMINI_API_KEY=YOUR_GEMINI_API_KEY
+
+MONGO_URI=YOUR_MONGODB_CONNECTION_STRING
 ```
 
-### Develop
+---
 
-To develop all apps and packages, run the following command:
+## Run Development Server
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo dev
+```bash
+npm run dev
 ```
 
-Without global `turbo`, use your package manager:
+---
 
-```sh
-cd my-turborepo
-npx turbo dev
-pnpm exec turbo dev
-pnpm exec turbo dev
+Frontend
+
+```
+http://localhost:5173
 ```
 
-You can develop a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+Backend
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo dev --filter=web
+```
+http://localhost:4000
 ```
 
-Without global `turbo`:
+---
 
-```sh
-npx turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-```
+# 📌 Current Progress
 
-### Remote Caching
+## ✅ Completed
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+- Streaming AI responses
+- Gemini Provider
+- AI Provider Pattern
+- Repository Pattern
+- MongoDB Integration
+- Persistent Conversations
+- Conversation History
+- Markdown Rendering
+- TypeScript Backend
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+---
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+## 🚧 In Progress
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
+- Chat Sidebar
+- Conversation Switching
 
-```sh
-cd my-turborepo
-turbo login
-```
+---
 
-Without global `turbo`, use your package manager:
+## 📅 Roadmap
 
-```sh
-cd my-turborepo
-npx turbo login
-pnpm exec turbo login
-pnpm exec turbo login
-```
+### Phase 1
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+- ✅ Streaming Chat
+- ✅ Persistent Storage
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+### Phase 2
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
+- Sidebar
+- Chat History
+- Authentication
 
-```sh
-turbo link
-```
+### Phase 3
 
-Without global `turbo`:
+- RAG
+- File Upload
+- Memory
 
-```sh
-npx turbo link
-pnpm exec turbo link
-pnpm exec turbo link
-```
+### Phase 4
 
-## Useful Links
+- Tool Calling
+- Multi AI Models
+- Image Generation
+- Voice Assistant
 
-Learn more about the power of Turborepo:
+### Phase 5
 
-- [Tasks](https://turborepo.dev/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.dev/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.dev/docs/reference/configuration)
-- [CLI Usage](https://turborepo.dev/docs/reference/command-line-reference)
+- Production Deployment
+- Monitoring
+- Docker
+- CI/CD
+
+---
+
+# 🎯 Design Goals
+
+AI Workspace is being built with production software engineering principles:
+
+- Separation of Concerns
+- Scalable Architecture
+- Clean Code
+- Reusable Components
+- Strong Type Safety
+- Easy Provider Switching
+- Extensible AI System
+
+---
+
+# 📸 Screenshots
+
+> Screenshots will be added as the project evolves.
+
+---
+
+# 🤝 Contributing
+
+Contributions, ideas, and feedback are always welcome.
+
+Fork the repository, create a feature branch, and submit a pull request.
+
+---
+
+# 📄 License
+
+MIT License.
+
+---
+
+## 👨‍💻 Author
+
+**Harsh Agnihotri**
+
+Building AI Workspace as a production-ready AI platform while documenting the engineering journey from architecture to deployment.
