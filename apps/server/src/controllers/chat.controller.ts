@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-// import { generateReplyStream } from "../services/chat.service.js";
 import { chatService } from "../services/chat.service.js";
 
 export async function chatController(
@@ -29,15 +28,12 @@ export async function chatController(
     "no-cache"
   );
 
-//   const stream = generateReplyStream(message);
-  const stream = chatService.streamReply([
-  {
-    role: "user",
-    content: message,
-  },
-]);
-
   try {
+    const stream = chatService.streamReply(
+      null,
+      message
+    );
+
     for await (const chunk of stream) {
       res.write(chunk);
     }
