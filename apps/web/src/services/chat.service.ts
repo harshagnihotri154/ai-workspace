@@ -25,7 +25,6 @@ export async function streamMessage(
     if (done) break;
 
     const chunk = decoder.decode(value);
-console.log(chunk);
     onChunk(chunk);
   }
 }

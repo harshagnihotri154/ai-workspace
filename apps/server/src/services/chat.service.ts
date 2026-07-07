@@ -26,7 +26,7 @@ console.log("Type:", typeof currentChatId);
 
     // Step 3 - Load Conversation
     const history =
-      await messageRepository.getByChatId(
+      await messageRepository.getConversation(
         currentChatId
       );
 
@@ -61,7 +61,20 @@ console.log("Type:", typeof currentChatId);
       currentChatId,
       aiReply
     );
+    
+    
+    
   }
+    async getChats() {
+    return chatRepository.findAll();
+  }
+
+async getConversation(chatId:string){
+
+    return messageRepository.getConversation(chatId);
+
+}
+  
 }
 
 export const chatService = new ChatService();

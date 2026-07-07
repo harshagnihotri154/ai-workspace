@@ -20,6 +20,11 @@ class ChatRepository {
     });
   }
 
+  async findAll() {
+  return Chat.find().sort({
+    updatedAt: -1,
+  });
+}
   async updateLastMessage(
     chatId: string,
     message: string

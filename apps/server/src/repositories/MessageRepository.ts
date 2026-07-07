@@ -15,7 +15,7 @@ class MessageRepository {
     });
   }
 
-  async getByChatId(chatId: string) {
+  async getConversation(chatId: string) {
     return Message.find({
       chatId: new Types.ObjectId(chatId),
     }).sort({

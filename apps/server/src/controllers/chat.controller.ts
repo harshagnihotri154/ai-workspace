@@ -51,3 +51,38 @@ export async function chatController(
     res.end();
   }
 }
+export async function getChatsController(
+  _req: Request,
+  res: Response
+) {
+  try {
+    const chats = await chatService.getChats();
+
+    return res.json(chats);
+  } catch (error) {
+    console.error(error);
+
+    return res.status(500).json({
+      error: "Failed to load chats.",
+    });
+  }
+}
+
+export async function getConversationController(
+    req:Request,
+    res:Response
+){
+
+  const id = req.params.id;
+
+if (typeof id !== "string") {
+  return res.status(400).json({
+    error: "Invalid chat id",
+  });
+}
+
+const messages = await chatService.getConversation(id);
+
+return res.json(messages);
+
+}
