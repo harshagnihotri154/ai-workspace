@@ -8,6 +8,7 @@ import ChatInput from "../components/ChatInput";
 import type { Message } from "../types/chat";
 import { streamMessage } from "../services/chat.service";
 
+
 export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
