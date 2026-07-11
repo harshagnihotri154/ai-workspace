@@ -1,281 +1,255 @@
 # 🚀 AI Workspace
 
-> A production-ready AI Workspace built with TypeScript, React, Node.js, MongoDB, and Google Gemini.
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black)](https://react.dev/)
+[![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#license)
 
-AI Workspace is a full-stack AI platform designed with scalable software architecture in mind. It provides real-time AI conversations, persistent chat history, multiple AI provider support, and is being built to support Retrieval-Augmented Generation (RAG), tool calling, memory, authentication, and much more.
+A full-stack AI platform built with **TypeScript, React, Node.js, MongoDB, and Google Gemini** — designed around a clean, layered architecture that makes it easy to add providers, features, and integrations over time.
+
+AI Workspace delivers real-time AI conversations with persistent chat history today, and is actively being extended to support Retrieval-Augmented Generation (RAG), tool calling, long-term memory, authentication, and more.
+
+---
+
+## Table of Contents
+
+- [Features](#-features)
+- [Architecture](#-architecture)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [Getting Started](#-getting-started)
+- [Progress & Roadmap](#-progress--roadmap)
+- [Design Goals](#-design-goals)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Author](#-author)
 
 ---
 
 ## ✨ Features
 
-### ✅ Current
+### Available Now
 
-- ⚡ Real-time AI response streaming
-- 🤖 Google Gemini integration
-- 🧩 AI Provider Pattern
-- 📦 Repository Pattern
-- 🏗 Clean Architecture
-- 💬 Persistent chat storage
-- 📝 Markdown rendering
-- 🎨 Modern React UI
-- 📂 MongoDB integration
-- 📜 Conversation history
-- ⚙️ TypeScript throughout the project
+| | |
+|---|---|
+| ⚡ | Real-time AI response streaming |
+| 🤖 | Google Gemini integration |
+| 🧩 | Provider pattern for pluggable AI backends |
+| 📦 | Repository pattern for data access |
+| 🏗 | Clean, layered architecture |
+| 💬 | Persistent chat storage (MongoDB) |
+| 📜 | Full conversation history |
+| 📝 | Markdown rendering with GFM support |
+| 🎨 | Modern, responsive React UI |
+| ⚙️ | End-to-end TypeScript |
 
----
-
-## 🚧 Coming Soon
+### Coming Soon
 
 - 🔐 Authentication (JWT)
-- 📂 Chat Sidebar
-- 🗂 Multiple Conversations
-- 📄 Document Upload
-- 🧠 RAG (Retrieval Augmented Generation)
-- 🧰 Tool Calling
-- 🖼 Image Generation
-- 🎙 Voice Conversations
-- 🤖 Multi-Model Support (Gemini, OpenAI, Claude)
-- 🧠 Long-Term Memory
-- 📊 Usage Analytics
-- 🌙 Themes & Customization
+- 📂 Chat sidebar with multiple conversations
+- 📄 Document upload
+- 🧠 Retrieval-Augmented Generation (RAG)
+- 🧰 Tool calling
+- 🖼 Image generation
+- 🎙 Voice conversations
+- 🤖 Multi-model support (Gemini, OpenAI, Claude)
+- 🧠 Long-term memory
+- 📊 Usage analytics
+- 🌙 Themes & customization
 
 ---
 
-# 🏛 Architecture
+## 🏛 Architecture
+
+AI Workspace follows a layered architecture that keeps business logic independent of any specific database or AI provider — so swapping Gemini for OpenAI, or MongoDB for another store, means changing one layer, not the whole app.
 
 ```
-Frontend (React)
-
-        │
-
-        ▼
-
-Controllers
-
-        │
-
-        ▼
-
-Services
-
-   ┌───────────────┐
-   ▼               ▼
-
-Repositories     AI Providers
-
-   ▼               ▼
-
-MongoDB        Gemini / OpenAI
-
+                ┌─────────────────┐
+                │  Frontend (React) │
+                └────────┬─────────┘
+                         │
+                         ▼
+                ┌─────────────────┐
+                │    Controllers   │
+                └────────┬─────────┘
+                         │
+                         ▼
+                ┌─────────────────┐
+                │     Services     │
+                └────────┬─────────┘
+                         │
+             ┌───────────┴───────────┐
+             ▼                       ▼
+    ┌─────────────────┐    ┌─────────────────┐
+    │   Repositories    │    │   AI Providers   │
+    └────────┬─────────┘    └────────┬─────────┘
+             ▼                       ▼
+    ┌─────────────────┐    ┌─────────────────┐
+    │     MongoDB       │    │ Gemini / OpenAI  │
+    └─────────────────┘    └─────────────────┘
 ```
 
-The project follows a layered architecture to keep business logic independent from databases and AI providers.
+**Request flow:** the React frontend calls into controllers, which delegate to services containing the business logic. Services talk to repositories for persistence and to AI providers for model inference — each swappable behind its own interface.
 
 ---
 
-# 🛠 Tech Stack
+## 🛠 Tech Stack
 
-## Frontend
-
-- React
-- TypeScript
+**Frontend**
+- React + TypeScript
 - Vite
 - Tailwind CSS
-- React Markdown
-- Remark GFM
+- React Markdown + Remark GFM
 
-## Backend
-
-- Node.js
-- Express
+**Backend**
+- Node.js + Express
 - TypeScript
 - Google Gemini API
-- MongoDB
-- Mongoose
+- MongoDB + Mongoose
 
-## Architecture
-
-- Repository Pattern
-- Provider Pattern
-- Layered Architecture
-- Streaming Responses
+**Architecture Patterns**
+- Repository pattern
+- Provider pattern
+- Layered architecture
+- Streaming responses
 
 ---
 
-# 📁 Project Structure
+## 📁 Project Structure
 
 ```
-apps
-├── web
-└── server
-
-server
-├── config
-├── controllers
-├── database
-├── middleware
-├── models
-├── providers
-├── repositories
-├── routes
-├── services
-├── utils
-
-web
-├── components
-├── pages
-├── services
-├── types
-└── layouts
+apps/
+├── web/                  # React frontend
+│   ├── components/
+│   ├── pages/
+│   ├── services/
+│   ├── types/
+│   └── layouts/
+│
+└── server/               # Node.js backend
+    ├── config/
+    ├── controllers/
+    ├── database/
+    ├── middleware/
+    ├── models/
+    ├── providers/
+    ├── repositories/
+    ├── routes/
+    ├── services/
+    └── utils/
 ```
 
 ---
 
-# 🚀 Getting Started
+## 🚀 Getting Started
 
-## Clone the Repository
+### Prerequisites
+
+- Node.js 18+
+- A MongoDB instance (local or Atlas)
+- A Google Gemini API key
+
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/your-username/ai-workspace.git
-
 cd ai-workspace
 ```
 
----
-
-## Install Dependencies
+### 2. Install dependencies
 
 ```bash
 npm install
 ```
 
----
+### 3. Configure environment variables
 
-## Environment Variables
-
-Create a `.env` file inside `apps/server`.
+Create a `.env` file inside `apps/server`:
 
 ```env
 PORT=4000
-
 GEMINI_API_KEY=YOUR_GEMINI_API_KEY
-
 MONGO_URI=YOUR_MONGODB_CONNECTION_STRING
 ```
 
----
-
-## Run Development Server
+### 4. Run the development server
 
 ```bash
 npm run dev
 ```
 
----
-
-Frontend
-
-```
-http://localhost:5173
-```
-
-Backend
-
-```
-http://localhost:4000
-```
+| Service | URL |
+|---|---|
+| Frontend | http://localhost:5173 |
+| Backend | http://localhost:4000 |
 
 ---
 
-# 📌 Current Progress
+## 📌 Progress & Roadmap
 
-## ✅ Completed
+### ✅ Completed
 
 - Streaming AI responses
-- Gemini Provider
-- AI Provider Pattern
-- Repository Pattern
-- MongoDB Integration
-- Persistent Conversations
-- Conversation History
-- Markdown Rendering
-- TypeScript Backend
+- Gemini provider integration
+- AI provider pattern
+- Repository pattern
+- MongoDB integration
+- Persistent conversations & history
+- Markdown rendering
+- TypeScript backend
+
+### 🚧 In Progress
+
+- Chat sidebar
+- Conversation switching
+
+### 🗺 Roadmap
+
+| Phase | Focus | Status |
+|---|---|---|
+| 1 | Streaming chat, persistent storage | ✅ Done |
+| 2 | Sidebar, chat history, authentication | 🚧 In progress |
+| 3 | RAG, file upload, memory | 📅 Planned |
+| 4 | Tool calling, multi-model support, image generation, voice assistant | 📅 Planned |
+| 5 | Production deployment, monitoring, Docker, CI/CD | 📅 Planned |
 
 ---
 
-## 🚧 In Progress
+## 🎯 Design Goals
 
-- Chat Sidebar
-- Conversation Switching
+AI Workspace is built with production-grade engineering principles in mind:
 
----
-
-## 📅 Roadmap
-
-### Phase 1
-
-- ✅ Streaming Chat
-- ✅ Persistent Storage
-
-### Phase 2
-
-- Sidebar
-- Chat History
-- Authentication
-
-### Phase 3
-
-- RAG
-- File Upload
-- Memory
-
-### Phase 4
-
-- Tool Calling
-- Multi AI Models
-- Image Generation
-- Voice Assistant
-
-### Phase 5
-
-- Production Deployment
-- Monitoring
-- Docker
-- CI/CD
+- Separation of concerns
+- Scalable, layered architecture
+- Clean, readable code
+- Reusable components
+- Strong type safety throughout
+- Easy provider switching (AI models & data stores)
+- Extensibility as a first-class concern
 
 ---
 
-# 🎯 Design Goals
+## 📸 Screenshots
 
-AI Workspace is being built with production software engineering principles:
-
-- Separation of Concerns
-- Scalable Architecture
-- Clean Code
-- Reusable Components
-- Strong Type Safety
-- Easy Provider Switching
-- Extensible AI System
+_Screenshots will be added as the UI evolves._
 
 ---
 
-# 📸 Screenshots
-
-> Screenshots will be added as the project evolves.
-
----
-
-# 🤝 Contributing
+## 🤝 Contributing
 
 Contributions, ideas, and feedback are always welcome.
 
-Fork the repository, create a feature branch, and submit a pull request.
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/your-feature`)
+3. Commit your changes
+4. Open a pull request
 
 ---
 
-# 📄 License
+## 📄 License
 
-MIT License.
+Released under the [MIT License](LICENSE).
 
 ---
 
@@ -283,4 +257,4 @@ MIT License.
 
 **Harsh Agnihotri**
 
-Building AI Workspace as a production-ready AI platform while documenting the engineering journey from architecture to deployment.
+Building AI Workspace as a production-ready AI platform, documenting the engineering journey from architecture to deployment.
